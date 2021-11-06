@@ -1,38 +1,13 @@
 import React from "react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 
-import image1 from "../assets/image1.jpg";
-import image2 from '../assets/image2.jpg'
-import image3 from '../assets/image3.jpg'
-
-const cards = [
-  {
-    id: 1,
-    title: "Barbijo",
-    image: image1,
-    url: "",
-  },
-  {
-    id: 2,
-    title: "Buzo",
-    image: image2,
-    url: "",
-  },
-  {
-    id: 3,
-    title: "Remera",
-    image: image3,
-    url: "",
-  },
-];
-
-function ItemList() {
+const ItemList=({productList})=> {
   return (
     <div className="container d-flex justify-content-center align-items-center h-100">
       <div className="row">
-        {cards.map(({ title, image, url, id }) => (
-          <div className="col-md-4" key={id}>
-            <Card imageSource={image} title={title} url={url} />
+        {productList.map(producto => (
+          <div className="col-md-4" key={producto.id}>
+            <Card imageSource={producto.image} title={producto.title} url={producto.url} categorias={producto.categorias} id={producto.id} />
           </div>
         ))}
       </div>

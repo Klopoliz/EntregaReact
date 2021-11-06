@@ -1,6 +1,8 @@
 import React from 'react';
-import logo from '../assets/BJLogo.png'
+import logo from '../Assets/BJLogo.png'
 import './NavBar.css'
+import { Link } from "react-router-dom";
+import CartWidget from "../CartWidget";
 
 const Navbar = () => {
     return (
@@ -16,23 +18,37 @@ const Navbar = () => {
               </button>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                  <Link to={`/`}>
                   <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="#">Home</a>
                   </li>
+                  </Link>
+                  <Link to={`/`}>
                   <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="#">Noticias</a>
                   </li>
+                  </Link>
+                  <Link to={`/categorias/Ropa`}>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Equipos</a>
+                    <a className="nav-link active" aria-current="page" href="#">Ropa</a>
                   </li>
+                  </Link>
+                  <Link to={`/categorias/Accesorios`}>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Tienda</a>
+                    <a className="nav-link active" aria-current="page" href="#">Accesorios</a>
                   </li>
+                  </Link>
+                  <Link to={`/`}>
+                  <li className='nav-item'>
+                    <a className='nav-link active' aria-current='page' href='#'><CartWidget /></a>
+                  </li>
+                   </Link>
                 </ul>
             </div>
             </div>
             </nav>
         </header>
+  
         </>
     )
 }

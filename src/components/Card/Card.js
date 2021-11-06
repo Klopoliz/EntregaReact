@@ -1,15 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import './card.css'
 
-function Card({ imageSource, title, text, url }) {
+function Card({ imageSource, title, text, url,id,categorias}) {
   return (
-    <div className="card text-center bg-dark animate__animated animate__fadeInUp">
+    <Link to={`/Card/${id}`}>
+    <div className={`card text-center bg-dark animate__animated animate__fadeInUp ${categorias}-category`}>
       <div className="overflow">
         <img src={imageSource} alt="a wallpaper" className="card-img-top" />
       </div>
       <div className="card-body text-light">
         <h4 className="card-title">{title}</h4>
+        <span>Cat: {categorias}</span>
         <p className="card-text text-secondary">
           {text
             ? text
@@ -20,19 +22,12 @@ function Card({ imageSource, title, text, url }) {
           target="_blank"
           className="btn btn-primary"
           rel="noreferrer"
-        >
+          >
           Comprar {title}
         </a>
       </div>
     </div>
+    </Link>
   );
 }
-
-Card.propTypes = {
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string,
-  url: PropTypes.string,
-  imageSource: PropTypes.string
-};
-
 export default Card;
