@@ -6,6 +6,7 @@ import image3 from '../components/Assets/image3.jpg'
 const data = [
     {
       id: "1",
+      stock: 50,
       title: "Barbijo",
       image: image1,
       url: "",
@@ -15,6 +16,7 @@ const data = [
     },
     {
       id: "2",
+      stock: 10,
       title: "Buzo",
       image: image2,
       url: "",
@@ -24,6 +26,7 @@ const data = [
     },
     {
       id: "3",
+      stock: 30,
       title: "Remera",
       image: image3,
       url: "",

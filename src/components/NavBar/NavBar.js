@@ -20,12 +20,12 @@ const Navbar = () => {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <Link to={`/`}>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Home</a>
+                    <p className="nav-link active" aria-current="page" href="#">Home</p>
                   </li>
                   </Link>
                   <Link to={`/`}>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Noticias</a>
+                    <p className="nav-link active" aria-current="page" href="#">Noticias</p>
                   </li>
                   </Link>
                   <Link to={`/categorias/Ropa`}>
@@ -35,12 +35,12 @@ const Navbar = () => {
                   </Link>
                   <Link to={`/categorias/Accesorios`}>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Accesorios</a>
+                    <p className="nav-link active" aria-current="page" href="#">Accesorios</p>
                   </li>
                   </Link>
                   <Link to={`/`}>
                   <li className='nav-item'>
-                    <a className='nav-link active' aria-current='page' href='#'><CartWidget /></a>
+                    <p className='nav-link active' aria-current='page' href='#'><CartWidget /></p>
                   </li>
                    </Link>
                 </ul>
