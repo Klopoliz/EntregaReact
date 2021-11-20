@@ -1,39 +1,38 @@
 import React, { useState, useEffect } from "react";
 import ItemList from "./ItemList";
-import data from "../Data/Data";
 import { useParams } from 'react-router-dom';
+import db from '../firebase/firebase';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
-const Itemlistcontainer = (props) => {
-   
-   const [productList, setProductList] = useState([]);
-   const [Cargando, setCargando] = useState(true);
-   const { catId } = useParams();
-   const promise = new Promise((resolve, reject) => {
-      setTimeout(()=>{
-      const products = 3;
-      if (products === 0) {
-         reject({ err: "no hay productos para mostrar" });
-      } else {
-         resolve(data);
-      }
-   },2000);
-   })
+export const ItemListContainer = ({ props }) => {
+   const [items, setItems] = useState([]);
+   const [loader, setLoader] = useState(true);
+ 
+   const { categorias } = useParams();
+ 
    useEffect(() => {
-         promise
-         .then((result) => {
-            /* setProductList(result); */
-            catId ? setProductList(result.filter((i) => i.categorias === catId)) : setProductList(result);
-            setCargando(false);
-         })
-         .catch((err) => {
-            console.log(err);
+     setLoader(true);
+ 
+     const myItems = categorias
+       ? query(collection(db, 'productos'), where('categorias', '==', categorias))
+       : collection(db, 'productos');
+ 
+     getDocs(myItems)
+       .then((res) => {
+         const results = res.docs.map((doc) => {
+           return { ...doc.data(), id: doc.id };
          });
-      }, [catId]);
-      return (
-         <div>
-         <h1>{props.title}</h1>
-         {Cargando ? <h2>Se estan cargando los productos</h2> : <ItemList productList={productList} /> }
-      </div>
-   );
-};
-export default Itemlistcontainer;
+ 
+         setItems(results);
+       })
+       .finally(() => setLoader(false));
+   }, [categorias]);
+   return loader ? (
+      <h2>CARGANDO...</h2>
+    ) : (
+      <>
+        <h3 style={{ textAlign: 'center' }}>{props}</h3>
+        <ItemList productList={items} />
+      </>
+    );
+  };

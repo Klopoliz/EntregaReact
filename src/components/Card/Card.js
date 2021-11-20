@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './card.css'
 
-function Card({ imageSource, title, text, url,id,categorias}) {
+function Card({ image, title, text, url,id,categorias}) {
   return (
     <Link to={`/Card/${id}`}>
     <div className={`card text-center bg-dark animate__animated animate__fadeInUp ${categorias}-category`}>
       <div className="overflow">
-        <img src={imageSource} alt="a wallpaper" className="card-img-top" />
+        <img src={image} alt="a wallpaper" className="card-img-top" />
       </div>
       <div className="card-body text-light">
         <h4 className="card-title">{title}</h4>

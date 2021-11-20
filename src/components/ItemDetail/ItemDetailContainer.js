@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import  ItemDetail  from './ItemDetail.js';
-import  data  from '../../Data/Data';
 import { useParams } from 'react-router-dom';
+import db from '../../firebase/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 export const ItemDetailContainer = () => {
-  const [item, setItem] = useState({});
+  const [product, setProduct] = useState({});
   const [loader, setLoader] = useState(true);
-  const { id } = useParams();
+
+  const { itemId } = useParams();
 
   useEffect(() => {
     setLoader(true);
-    const getItems = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(data);
-      }, 1000);
-    });
 
-    getItems
+    const myItem = doc(db, 'productos', itemId);
+
+    getDoc(myItem)
       .then((res) => {
-        setItem(res.find((i) => i.id === id));
+        const result = { id: res.id, ...res.data() };
+        setProduct(result);
       })
-      .finally(() => setLoader(false));
-  }, [id]);
+      .finally(() => {
+        setLoader(false);
+      });
+  }, []);
 
-  return loader ? <h3>Cargando...</h3> : <ItemDetail {...item} />;
+  return loader ? <h1>CARGANDO...</h1> : <ItemDetail {...product} />;
 };
