@@ -8,13 +8,13 @@ export const ItemListContainer = ({ props }) => {
    const [items, setItems] = useState([]);
    const [loader, setLoader] = useState(true);
  
-   const { categorias } = useParams();
+   const { categoryId } = useParams();
  
    useEffect(() => {
      setLoader(true);
  
-     const myItems = categorias
-       ? query(collection(db, 'productos'), where('categorias', '==', categorias))
+     const myItems = categoryId
+       ? query(collection(db, 'productos'), where('categorias', '==', categoryId))
        : collection(db, 'productos');
  
      getDocs(myItems)
@@ -26,7 +26,7 @@ export const ItemListContainer = ({ props }) => {
          setItems(results);
        })
        .finally(() => setLoader(false));
-   }, [categorias]);
+   }, [categoryId]);
    return loader ? (
       <h2>CARGANDO...</h2>
     ) : (

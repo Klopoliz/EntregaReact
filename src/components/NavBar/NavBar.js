@@ -30,15 +30,15 @@ const Navbar = () => {
                   </Link>
                   <Link to={`/categorias/Ropa`}>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Ropa</a>
+                    <a className="nav-link active" aria-current="page">Ropa</a>
                   </li>
                   </Link>
                   <Link to={`/categorias/Accesorios`}>
                   <li className="nav-item">
-                    <p className="nav-link active" aria-current="page" href="#">Accesorios</p>
+                    <p className="nav-link active" aria-current="page">Accesorios</p>
                   </li>
                   </Link>
-                  <Link to={`/`}>
+                  <Link to={`/cart`}>
                   <li className='nav-item'>
                     <p className='nav-link active' aria-current='page' href='#'><CartWidget /></p>
                   </li>

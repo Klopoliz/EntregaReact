@@ -31,14 +31,14 @@ function App() {
             </section>}
           />
           <Route
-            path="/categorias/:catId"
+            path="/categorias/:categoryId"
             element={<section className="fondo">
             <div className="container pt-5">
             <ItemListContainer className="container"/>
             </div>
             </section>}
           />
-          <Route path="/Card/:id" element={<ItemDetailContainer />} />
+          <Route path="/Card/:itemId" element={<ItemDetailContainer />} />
         </Routes>
         </CartFuncion>
       </BrowserRouter>

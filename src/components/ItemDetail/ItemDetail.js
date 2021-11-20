@@ -10,7 +10,7 @@ const ItemDetail = ({ id, stock, title, image, price, description }) => {
 
   const agregar = (props)=>{
       setBuy(true)
-      onAdd({id,title,price}, props.unidades)
+      onAdd({id,title,price,image}, props.unidades)
       alert(`agregaste ${props.unidades} al carrito`)
 
   }
